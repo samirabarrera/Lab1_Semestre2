@@ -1,4 +1,3 @@
-
 /** ****************  LABORATORIO 1       **************
  * Empezaras ordenando las obras de arte de un museo y has decidido hacer
  * un inventario de algunos de los más famosos.
