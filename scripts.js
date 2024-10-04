@@ -1,24 +1,38 @@
-/** ****************  LABORATORIO 1       **************
- * Empezaras ordenando las obras de arte de un museo y has decidido hacer
- * un inventario de algunos de los más famosos.
+/**
+ * Sigue los pasos y resuelve
  * 
- * Has decidido declarar una serie de objetos que se corresponderán con 
- * las siguientes pinturas: 
- *  Mona Lisa (Leonardo da Vinci, 1503),
- *  La última cena (Leonardo da Vinci, 1495), 
- *  La noche estrellada (Vincent van Gogh, 1889), 
- *  El grito (Edvard Munch, 1893), 
- *  El Guernica (Pablo Picasso, 1937), 
- *  El beso (Gustav Klimt, 1907), 
- *  La joven de la perla (Johannes Vermeer, 1665), 
- *  El nacimiento de Venus (Sandro Botticelli, 1485), 
- *  Las meninas (Diego Velázquez, 1656), 
- *  La creación de Adán (Miguel Ángel, 1512).
+ * Escribe dos funciones, Image y getImage, que devolverán un nuevo objeto 
+ * de imagen basado en tres argumentos dados: title, artist, y date.
 
-    Mostrar todas las imágenes de la lista en la consola 
-    (información completa: título, artista y fecha de creación).   
+La función Image es el constructor y getImage la fábrica. 
+Utilizando la matriz images de datos de la tarea anterior, 
+crea una nueva matriz, images1, utilizando el Imageconstructor 
+(no copias los objetos, solo crea unos nuevos en función de las propiedades
+ leídas).
+
+De manera similar, a partir de images1 crea una nueva matriz, images2, 
+utilizando getImage.
+
+Mostrar el contenido de images2.
  */
-// Declaración de los objetos de cada cuadro
+
+// Paso 1: Definir la función constructora Image
+function Image(title, artist, date) {
+    this.title = title;
+    this.artist = artist;
+    this.date = date;
+}
+
+// Paso 2: Definir la función de fábrica getImage
+function getImage(title, artist, date) {
+    return {
+        title: title,
+        artist: artist,
+        date: date
+    };
+}
+
+// Los datos del arreglo original de imágenes
 let cuadros = [
     { title: "Mona Lisa", artist: "Leonardo da Vinci", date: 1503 },
     { title: "La última cena", artist: "Leonardo da Vinci", date: 1495 },
@@ -32,6 +46,13 @@ let cuadros = [
     { title: "La creación de Adán", artist: "Miguel Ángel", date: 1512 }
 ];
 
-for (let cuadro of cuadros) {
-    console.log(`Título: ${cuadro.title}, Artista: ${cuadro.artist}, Año: ${cuadro.date}`);
-}
+// Paso 4: Crear un nuevo arreglo images1 usando el constructor Image
+let images1 = cuadros.map(cuadro => new Image(cuadro.title, cuadro.artist, cuadro.date));
+
+// Paso 5: Crear un nuevo arreglo images2 usando la función de fábrica getImage
+let images2 = images1.map(image => getImage(image.title, image.artist, image.date));
+
+// Mostrar el contenido de images2 en la consola
+images2.forEach(image => {
+    console.log(`Título: ${image.title}, Artista: ${image.artist}, Año: ${image.date}`);
+});
